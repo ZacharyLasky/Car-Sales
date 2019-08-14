@@ -4,10 +4,16 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
 
-export const store = createStore(reducer);
-
+import { carReducer } from './reducers';
 import 'bulma/css/bulma.css';
 import './styles.scss';
 
+export const store = createStore(carReducer);
+
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, 
+rootElement
+);
